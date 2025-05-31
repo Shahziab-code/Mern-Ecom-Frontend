@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { CartItem } from "../types/types";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/reducer/cartReducer";
+import { Product } from "../types/types"; // adjust path if needed
 
 const Home = () => {
   const { data, isLoading, isError } = useLatestProductsQuery("");
@@ -35,7 +36,7 @@ const Home = () => {
         {isLoading ? (
           <Skeleton width="80vw" />
         ) : (
-          data?.products.map((i) => (
+          data?.products.map((i: Product) => (
             <ProductCard
               key={i._id}
               productId={i._id}

@@ -8,6 +8,8 @@ import { CustomError } from "../types/api-types";
 import toast from "react-hot-toast";
 import { Skeleton } from "../components/loader";
 import { RootState } from "../redux/store";
+import { Order } from "../types/types"; // adjust path if needed
+
 
 type DataType = {
   _id: string;
@@ -65,7 +67,7 @@ const Orders = () => {
     useEffect(() => {
       if (data)
         setRows(
-          data.orders.map((i) => ({
+          data.orders.map((i: Order) => ({
             _id: i._id,
             amount: i.total,
             discount: i.discount,

@@ -1,13 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
-  AllProductsResponce,
-  CategoriesResponce,
+  AllProductsResponse,
+  CategoriesResponse,
   DeleteProductRequest,
   MessageResponse,
   NewProductRequest,
   ProductResponse,
   SearchProductsRequest,
-  SearchProductsResponce,
+  SearchProductsResponse,
   UpdateProductRequest,
 } from "../../types/api-types";
 
@@ -18,20 +18,20 @@ export const productAPI = createApi({
   }),
   tagTypes: ["product"],
   endpoints: (builder) => ({
-    latestProducts: builder.query<AllProductsResponce, string>({
+    latestProducts: builder.query<AllProductsResponse, string>({
       query: () => "latest",
       providesTags: ["product"],
     }),
-    allProducts: builder.query<AllProductsResponce, string>({
+    allProducts: builder.query<AllProductsResponse, string>({
       query: (id) => `admin-products?id=${id}`,
       providesTags: ["product"],
     }),
-    categories: builder.query<CategoriesResponce, string>({
+    categories: builder.query<CategoriesResponse, string>({
       query: () => `categories`,
       providesTags: ["product"],
     }),
     searchProducts: builder.query<
-      SearchProductsResponce,
+      SearchProductsResponse,
       SearchProductsRequest
     >({
       query: ({ price, search, sort, category, page }) => {

@@ -7,7 +7,7 @@ import {
 import { CustomError } from "../types/api-types";
 import toast from "react-hot-toast";
 import { Skeleton } from "../components/loader";
-import { CartItem } from "../types/types";
+import { CartItem, Product } from "../types/types";
 import { addToCart } from "../redux/reducer/cartReducer";
 import { useDispatch } from "react-redux";
 
@@ -87,7 +87,7 @@ const Search = () => {
           >
             <option value="">ALL</option>
             {!loadingCategories &&
-              categoriesResponse?.categories.map((i) => (
+              categoriesResponse?.categories.map((i: string) => (
                 <option key={i} value={i}>
                   {i.toUpperCase()}
                 </option>
@@ -108,7 +108,7 @@ const Search = () => {
           <Skeleton length={10}/>
         ) : (
           <div className="search-product-list">
-            {searchedData?.products.map((i) => (
+            {searchedData?.products.map((i: Product) => (
               <ProductCard
                 key={i._id}
                 productId={i._id}
