@@ -1,3 +1,23 @@
+// -------------------------
+// Replace all @import with @use
+// -------------------------
+@use "./admin-styles/mixin" as mixin;
+@use "variables" as *;
+@use "home" as *;
+@use "cart" as *;
+@use "shipping" as *;
+@use "login" as *;
+@use "search" as *;
+@use "admin-styles/dashboard" as *;
+@use "admin-styles/products" as *;
+@use "admin-styles/chart" as *;
+@use "admin-styles/dashboardapp" as *;
+@use "admin-styles/mediaquery" as *;
+
+// -------------------------
+// Global Styles & Variables
+// -------------------------
+
 * {
   margin: 0;
   padding: 0;
@@ -13,10 +33,9 @@ a {
   color: black;
 }
 
-$color1: white;
-$color2: rgb(46, 46, 46);
-$color3: rgb(0, 104, 136);
-
+// -------------------------
+// Color Utilities
+// -------------------------
 .red {
   color: red;
 }
@@ -27,17 +46,9 @@ $color3: rgb(0, 104, 136);
   color: rgb(0, 195, 0);
 }
 
-@import "admin-styles/mixin";
-@import "home";
-@import "cart";
-@import "shipping";
-@import "login";
-@import "search";
-@import "admin-styles/dashboard";
-@import "admin-styles/products";
-@import "admin-styles/chart";
-@import "admin-styles/dashboardapp";
-@import "admin-styles/mediaquery";
+// -------------------------
+// Application Layout Styles
+// -------------------------
 
 .container {
   max-width: 1367px;
@@ -45,22 +56,21 @@ $color3: rgb(0, 104, 136);
   margin: auto;
   overflow: auto;
   > h1 {
-    @include heading;
+    @include mixin.heading;
     margin: 1rem 100px;
     text-align: left;
   }
 }
 
 .heading {
-  @include heading;
+  @include mixin.heading;
   margin: 1rem 0;
   text-align: center;
 }
 
 .header {
-  @include flex(row, flex-end, stretch, 1.2rem);
+  @include mixin.flex(row, flex-end, stretch, 1.2rem);
   padding: 1rem;
-
   a {
     color: $color2;
     letter-spacing: 2px;
@@ -90,14 +100,14 @@ $color3: rgb(0, 104, 136);
     left: calc(100% - 100px);
     top: 8%;
     > div {
-      @include flex(column, flex-start, center, 0.25rem);
+      @include mixin.flex(column, flex-start, center, 0.25rem);
     }
   }
 }
 
 .not-found {
   height: 80vh;
-  @include flex(column);
+  @include mixin.flex(column);
   > svg {
     font-size: 5rem;
   }
@@ -108,10 +118,9 @@ $color3: rgb(0, 104, 136);
   width: 100%;
   margin: auto;
   > form {
-    @include flex(column, flex-start, stretch, 2rem);
-
+    @include mixin.flex(column, flex-start, stretch, 2rem);
     > button {
-      @include btn(1rem, $color3, $color1);
+      @include mixin.btn(1rem, $color3, $color1);
       width: 100%;
       font-size: 1.1rem;
     }
@@ -119,7 +128,7 @@ $color3: rgb(0, 104, 136);
 }
 
 .admin-container {
-  @include grid(1fr 4fr, 2rem);
+  @include mixin.grid(1fr 4fr, 2rem);
   height: 100vh;
   background-color: rgb(247, 247, 247);
   > aside {
@@ -135,19 +144,20 @@ $color3: rgb(0, 104, 136);
     > div {
       margin: 2rem 1rem;
       > h5 {
-        @include heading(2px);
+        @include mixin.heading(2px);
         opacity: 0.8;
         margin: 1rem 0;
       }
+
       > ul {
-        @include flex(column, unset, unset, 0.5rem);
+        @include mixin.flex(column, unset, unset, 0.5rem);
         list-style: none;
         > li {
           padding: 0.5rem 1rem;
           border-radius: 10px;
           a {
             color: rgba(0, 0, 0, 0.825);
-            @include flex(row, unset);
+            @include mixin.flex(row, unset);
           }
         }
       }
@@ -166,7 +176,6 @@ $color3: rgb(0, 104, 136);
   }
 
   th {
-    font-weight: bold;
     color: #0000009e;
     font-size: 1.1rem;
     font-weight: 400;
@@ -187,6 +196,7 @@ $color3: rgb(0, 104, 136);
         object-fit: contain;
         border-radius: 10px;
       }
+
       a {
         text-decoration: none;
         background-color: rgba(44, 104, 255, 0.455);
@@ -194,6 +204,7 @@ $color3: rgb(0, 104, 136);
         padding: 0.25rem 0.5rem;
         border-radius: 10px;
       }
+
       button {
         width: 2rem;
         height: 2rem;
@@ -207,20 +218,12 @@ $color3: rgb(0, 104, 136);
           opacity: 0.6;
         }
       }
-
-      &:first-child {
-        border-left: none;
-      }
-
-      &:last-child {
-        border-right: none;
-      }
     }
   }
 }
 
 .table-pagination {
-  @include flex;
+  @include mixin.flex;
   padding: 2rem;
   > button {
     padding: 0.5rem 1rem;
@@ -240,7 +243,7 @@ $color3: rgb(0, 104, 136);
 #hamburger {
   display: grid;
   place-items: center;
-  @include square(3rem);
+  @include mixin.square(3rem);
   border: none;
   outline: none;
   cursor: pointer;
@@ -270,9 +273,9 @@ $color3: rgb(0, 104, 136);
 .loader {
   width: 100%;
   height: 100vh;
-  @include flex;
+  @include mixin.flex;
   > div {
-    @include square(10rem);
+    @include mixin.square(10rem);
     border-radius: 50%;
     border-top: 1rem solid rgb(43, 43, 43);
     border-left: 1rem solid rgb(43, 43, 43);
@@ -306,7 +309,6 @@ $color3: rgb(0, 104, 136);
     transform: translate(-50%, -20%);
   }
 }
-
 @keyframes skeleton-loading {
   0% {
     opacity: 0.6;

@@ -1,3 +1,4 @@
+// _mixin.scss
 @mixin heading($spacing: 3px, $weight: 300, $case: uppercase) {
   letter-spacing: $spacing;
   font-weight: $weight;
@@ -16,6 +17,7 @@
   align-items: $alignItems;
   gap: $gap;
 }
+
 @mixin grid($col: 1fr, $gap: 1rem, $row: unset) {
   display: grid;
   grid-template-columns: $col;
@@ -48,10 +50,10 @@
 }
 
 @mixin btn($p, $bg, $color) {
-    cursor: pointer;
-    border: none;
-    outline: none;
-    padding: $p;
-    background-color: $bg;
-    color: $color;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: $p;
+  background-color: $bg;
+  color: $color;
 }

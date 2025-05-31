@@ -70,11 +70,20 @@ function TableHOC<T extends Object>(
             {page.map((row) => {
               prepareRow(row);
 
+              const rowProps = row.getRowProps();
+              const { key, ...rest } = rowProps;
+
               return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                  ))}
+                <tr key={key} {...rest}>
+                  {row.cells.map((cell) => {
+                    const cellProps = cell.getCellProps();
+                    const { key: cellKey, ...cellRest } = cellProps;
+                    return (
+                      <td key={cellKey} {...cellRest}>
+                        {cell.render("Cell")}
+                      </td>
+                    );
+                  })}
                 </tr>
               );
             })}

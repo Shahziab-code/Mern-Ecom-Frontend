@@ -1,57 +1,62 @@
-.shipping{
-    @include flex;
-    .back-btn{
-        @include square(2.5rem);
-        background-color: $color2;
-        color: $color1;
-        @include flex;
-        position: fixed;
-        top: 2rem;
-        left: 2rem;
-        border-radius: 100%;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        @include baseShadow;
+@use "./admin-styles/mixin" as mixin;
+@use "variables" as *;
 
-        svg{
-            transition: all 0.3s;
-        }
+.shipping {
+  @include mixin.flex;
 
-        &:hover svg{
-            translate: -0.25rem;
-        }
+  .back-btn {
+    @include mixin.square(2.5rem);
+    background-color: $color2;
+    color: $color1;
+    @include mixin.flex;
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    border-radius: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    @include mixin.baseShadow;
+
+    svg {
+      transition: all 0.3s;
     }
 
-    > form {
-        max-width: 450px;
-        width: 100%;
-        @include flex(column, center, stretch, 2rem);
-        padding: 2rem;
-
-        > h1 {
-            @include heading(2px);
-            margin: 2rem;
-            text-align: center;
-        }
-
-        > input,
-        > select {
-            @include inputStyle;
-            border: 1px solid rgba(31, 31, 31, 0.351);
-            font-family: 1.05rem;
-            border-radius: 5px;
-        }
-
-        > button {
-            @include btn(1rem, $color3, $color1);
-            border-radius: 5px;
-            font-size: 1.05rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            &:hover {
-                opacity: 0.8;
-            }
-        }
+    &:hover svg {
+      translate: -0.25rem;
     }
+  }
+
+  > form {
+    max-width: 450px;
+    width: 100%;
+    @include mixin.flex(column, center, stretch, 2rem);
+    padding: 2rem;
+
+    > h1 {
+      @include mixin.heading(2px);
+      margin: 2rem;
+      text-align: center;
+    }
+
+    > input,
+    > select {
+      @include mixin.inputStyle;
+      border: 1px solid rgba(31, 31, 31, 0.351);
+      font-family: 1.05rem;
+      border-radius: 5px;
+    }
+
+    > button {
+      @include mixin.btn(1rem, $color3, $color1);
+      border-radius: 5px;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
 }
