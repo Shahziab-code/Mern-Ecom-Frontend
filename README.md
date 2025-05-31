@@ -1,54 +1,41 @@
-# React + TypeScript + Vite
+# Welcome to Ecommerce Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hi! I'm  **Shahzaib Soomro**. If you want to know this is My Ecommerce Practice Project I have also created it's Frontend in **MERN Stack**.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Tech Used 
 
-## Expanding the ESLint configuration
+I have used some of common Tech **Node**, **React**, **Express** and **MongoDB**.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Install Dependencies
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+ **For Dev** - `npm i && npm run build` **For Product** - `npm i && npm run preview`
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Env Variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Make sure to create a .env file in root directory and add appropriate variables in order to use the app.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Essential Variables
+
+VITE_FIREBASE_KEY = `from firebase`
+
+VITE_AUTH_DOMAIN=`from firebase`
+
+VITE_PROJECT_ID=`from firebase`
+
+VITE_STORAGE_BUCKET=`from firebase`
+
+VITE_MESSAGING_SENDER_ID=`from firebase`
+
+VITE_APP_ID=`from firebase`
+
+VITE_SERVER= `Your Backend Server URL`
+
+VITE_STRIPE_KEY = `Stripe Publishable Key`
+
+fill each filed with your info respectively.
+
+## Author
+
+ **Instagram** Click[Here](https://www.instagram.com/lhmzsoomro220?igsh=MWZtd2drbnVxazZsMw==) @lhmzsoomro220
+ **LinkedIn** Click[Here](https://www.linkedin.com/in/shahzaib-khan-soomro-3b9316245?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) @shahzaib khan soomro
