@@ -8,14 +8,17 @@
     @include mixin.flex(row, unset);
     padding: 0 1rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.37);
+
     > input {
       margin-right: auto;
       @include mixin.inputStyle(100%, 1rem 0);
     }
+
     > svg {
       font-size: 1.2rem;
       opacity: 0.7;
     }
+
     > img {
       @include mixin.square(2rem);
       border-radius: 50%;
@@ -25,6 +28,7 @@
   .widget-container {
     @include mixin.flex(row, space-between, stretch, 2rem);
     padding: 2rem 2rem 2rem 0;
+    flex-wrap: wrap;
 
     .widget {
       width: 16rem;
@@ -33,14 +37,15 @@
       padding: 2rem;
       border-radius: 10px;
       @include mixin.flex(row, space-between, stretch, 0);
+      margin-bottom: 2rem;
 
       .widget-info {
         > p {
           opacity: 0.7;
-          font-size: 0.8rem;
+          font-size: clamp(0.7rem, 1vw, 0.8rem);
         }
         > h4 {
-          font-size: 1.5rem;
+          font-size: clamp(1.2rem, 1.5vw, 1.5rem);
         }
         > span {
           @include mixin.flex(row, unset, center, 0.2rem);
@@ -55,6 +60,7 @@
         display: grid;
         place-items: center;
         background-color: aquamarine;
+
         &::before {
           content: "";
           position: absolute;
@@ -62,6 +68,7 @@
           background-color: white;
           border-radius: 100%;
         }
+
         span {
           position: relative;
         }
@@ -70,39 +77,70 @@
   }
 
   .graph-container {
-    @include mixin.flex(row, unset, unset, 2rem);
+    display: flex;
+    gap: 2rem;
     padding: 0 2rem 2rem 0;
+    flex-wrap: wrap;
+    height: 30rem;
+
     > div {
       background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.132);
       border-radius: 10px;
+      flex: 1 1 300px;
+      min-width: 280px;
+      max-width: 100%;
+      margin-bottom: 2rem;
     }
 
     .revenue-chart {
+      padding: 1rem 2rem;
       width: 100%;
-      padding: 1rem 3rem;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.132);
+      border-radius: 10px;
 
       > h2 {
         @include mixin.heading;
-        margin: 1rem 0 2rem 0.25rem;
+        margin: 1rem 0 1.5rem 0.25rem;
         text-align: center;
+        font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+        word-wrap: break-word;
+      }
+
+      canvas,
+      div {
+        max-width: 100%;
+        overflow-x: auto;
       }
     }
 
     .dashboard-categories {
-      width: 100%;
       max-width: 16rem;
-      @include mixin.flex(column, center, unset, 0);
-      padding-bottom: 2rem;
+      padding: 1rem;
+      border-radius: 10px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.132);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
       > h2 {
         @include mixin.heading;
         margin: 1.5rem 0 2rem 0;
         text-align: center;
+        font-size: clamp(1.3rem, 1.8vw + 1rem, 2rem);
       }
 
       > div {
         overflow-y: auto;
         height: 40rem;
         padding-left: 0.5rem;
+
         &::-webkit-scrollbar {
           display: none;
         }
@@ -112,10 +150,13 @@
         width: 100%;
         @include mixin.flex(row, space-between);
         padding: 1rem;
+
         > h5 {
           letter-spacing: 1px;
           font-weight: 300;
+          font-size: clamp(0.75rem, 1vw, 0.9rem);
         }
+
         > div {
           margin-left: auto;
           width: 6rem;
@@ -123,11 +164,13 @@
           border-radius: 20px;
           height: 0.5rem;
           flex: none;
+
           > div {
             border-radius: 20px;
             height: 100%;
           }
         }
+
         > span {
           font-size: 0.8rem;
           font-weight: 700;
@@ -141,11 +184,16 @@
     gap: 2rem;
     padding: 0 2rem 2rem 0;
     height: 30rem;
+    flex-wrap: wrap;
 
     > div {
       background-color: white;
       box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.132);
       border-radius: 10px;
+      flex: 1 1 300px;
+      min-width: 280px;
+      max-width: 100%;
+      margin-bottom: 2rem;
     }
 
     .gender-chart {
@@ -153,11 +201,14 @@
       max-width: 20rem;
       padding: 1rem;
       position: relative;
+
       > h2 {
         text-align: center;
         margin: 1.5rem 0 2rem 0;
         @include mixin.heading;
+        font-size: clamp(1.3rem, 2vw + 1rem, 2rem);
       }
+
       > p {
         @include mixin.posCenter;
         font-size: 2rem;
@@ -169,9 +220,134 @@
       width: 100%;
       padding: 1rem;
       overflow-x: auto;
+
       > h2 {
         margin: 1.5rem 0 0 0;
         @include mixin.heading;
+        font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+      }
+    }
+  }
+}
+
+/* ---------------------- */
+/* Responsive Media Queries */
+/* ---------------------- */
+
+@media (max-width: 1024px) {
+  .dashboard {
+    .bar {
+      height: 3.5rem;
+      padding: 0 0.8rem;
+
+      > svg {
+        font-size: 1rem;
+      }
+
+      > img {
+        @include mixin.square(1.8rem);
+      }
+    }
+
+    .widget-container {
+      padding: 1.5rem 1.5rem 1.5rem 0;
+
+      .widget {
+        width: 14rem;
+        padding: 1.5rem;
+      }
+    }
+
+    .graph-container {
+      flex-direction: column;
+      padding: 0 1.5rem 1.5rem 0;
+      height: auto;
+
+      > div {
+        width: 100%;
+        margin-bottom: 1.5rem;
+      }
+
+      .revenue-chart {
+        padding: 1rem;
+        overflow-x: auto;
+      }
+
+      .dashboard-categories > div {
+        height: 35rem;
+      }
+    }
+
+    .transaction-container {
+      padding: 0 1.5rem 1.5rem 0;
+      height: auto;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    .graph-container {
+      padding: 0 1rem 1rem 0;
+      flex-direction: column;
+      height: auto;
+
+      > div {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+
+      .revenue-chart {
+        padding: 1rem;
+        overflow-x: auto;
+      }
+
+      .dashboard-categories > div {
+        height: 30rem;
+      }
+    }
+
+    .transaction-container {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 0 1rem 1rem 0;
+      height: auto;
+
+      > div {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    .graph-container {
+      padding: 0 0.5rem 0.5rem 0;
+      gap: 1rem;
+
+      > div {
+        padding: 0.75rem;
+        width: 100%;
+      }
+
+      .revenue-chart {
+        padding: 0.75rem;
+      }
+
+      .dashboard-categories > div {
+        height: 25rem;
+      }
+    }
+
+    .transaction-container {
+      padding: 0 0.5rem 0.5rem 0;
+      height: auto;
+      gap: 0.75rem;
+
+      > div {
+        padding: 0.75rem;
       }
     }
   }

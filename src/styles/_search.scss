@@ -71,3 +71,56 @@
     }
   }
 }
+
+// Responsive Media Queries
+@media screen and (max-width: 900px) {
+  .product-search-page {
+    padding: 1rem;
+    @include mixin.flex(column, flex-start, stretch, 1rem);
+
+    > aside {
+      min-width: 100%;
+      box-shadow: none;
+      padding: 1rem;
+
+      > div {
+        > input,
+        > select {
+          margin: 0.25rem 0;
+        }
+      }
+    }
+
+    > main {
+      padding: 0;
+
+      > input {
+        width: 100%;
+        font-size: 1rem;
+        margin: 0.5rem 0;
+      }
+
+      .search-product-list {
+        height: auto;
+        max-height: 400px;
+        overflow-y: auto;
+        gap: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .product-search-page {
+    > main {
+      > input {
+        font-size: 0.9rem;
+      }
+
+      article > button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

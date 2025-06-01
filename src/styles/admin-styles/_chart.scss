@@ -7,6 +7,7 @@
 
   > h1 {
     margin: 0 0 5rem 2rem;
+    font-size: clamp(2rem, 3vw + 1rem, 3.5rem);
   }
 
   > section {
@@ -15,15 +16,82 @@
 
     > div {
       max-width: 25rem;
-      margin: auto;
-      margin-top: 6rem;
-      margin-bottom: -1rem;
+      margin: 6rem auto -1rem auto;
     }
 
     > h2 {
       margin: 2rem 0;
       text-align: center;
-      @include mixin.heading(2px); 
+      @include mixin.heading(2px);
+      font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    padding: 3rem 2rem;
+
+    > h1 {
+      margin-left: 1rem;
+    }
+
+    > section {
+      width: 90%;
+
+      > div {
+        max-width: 20rem;
+        margin-top: 4rem;
+      }
+
+      > h2 {
+        margin: 1.5rem 0;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+
+    > h1 {
+      margin-left: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    > section {
+      width: 100%;
+      margin: 2rem auto;
+
+      > div {
+        max-width: 100%;
+        margin-top: 3rem;
+      }
+
+      > h2 {
+        margin: 1rem 0;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 1rem;
+
+    > h1 {
+      font-size: 1.8rem;
+      margin-left: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    > section {
+      width: 100%;
+
+      > div {
+        margin-top: 2rem;
+      }
+
+      > h2 {
+        font-size: 1.3rem;
+        margin: 0.8rem 0;
+      }
     }
   }
 }

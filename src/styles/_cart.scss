@@ -119,3 +119,95 @@
     }
   }
 }
+
+// Responsive Media Queries
+@media screen and (max-width: 1024px) {
+  .cart {
+    padding: 2rem;
+
+    @include mixin.flex(column, center, unset, 2rem);
+
+    > main,
+    > aside {
+      width: 100%;
+      padding: 0;
+    }
+
+    > aside {
+      margin-top: 2rem;
+      padding: 0 1rem;
+    }
+  }
+
+  .cart-item {
+    @include mixin.flex(column, flex-start, center, 1rem);
+    padding: 1rem 0;
+
+    > img {
+      @include mixin.square(7rem);
+      margin-bottom: 1rem;
+    }
+
+    > article {
+      width: 100%;
+      @include mixin.flex(row, space-between, center, 1rem);
+
+      a {
+        font-size: 1rem;
+      }
+
+      span {
+        font-size: 0.9rem;
+      }
+    }
+
+    > div {
+      margin-left: 0;
+      margin-top: 0.5rem;
+
+      button {
+        @include mixin.square(2.5rem);
+        font-size: 1.1rem;
+      }
+    }
+
+    > button {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cart {
+    padding: 1rem;
+
+    > aside {
+      padding: 0;
+      margin-top: 1.5rem;
+    }
+  }
+
+  .cart-item {
+    > img {
+      @include mixin.square(5rem);
+    }
+
+    > article {
+      a {
+        font-size: 0.9rem;
+      }
+
+      span {
+        font-size: 0.8rem;
+      }
+    }
+
+    > div {
+      button {
+        @include mixin.square(2rem);
+        font-size: 1rem;
+      }
+    }
+  }
+}

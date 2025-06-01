@@ -4,7 +4,7 @@
   padding: 2rem 5%;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 4rem);
+  min-height: calc(100vh - 4rem);
   width: 100%;
 
   > section {
@@ -18,47 +18,59 @@
     @include mixin.heading(1px);
     margin-top: 3rem;
     @include mixin.flex(row, space-between, center);
+    font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
   }
 
   .findmore {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1vw + 0.4rem, 1.2rem);
+    text-decoration: none;
+    color: #006888;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   > main {
     width: 100%;
     display: flex;
-    flex: 1;
-    gap: 1rem;
-    overflow-x: auto;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
   }
 }
 
 .product-card {
-  width: 18.75rem;
+  width: 18rem;
+  max-width: 100%;
   height: 25rem;
   padding: 1rem;
-  flex: none;
+  flex: 1 1 18rem;
   @include mixin.flex(column, flex-start, center, 4px);
   position: relative;
   background-color: white;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 
   &:hover > div {
     opacity: 1;
   }
 
   img {
-    @include mixin.square(calc(18.75rem - 3rem));
+    @include mixin.square(calc(100% - 3rem));
     object-fit: cover;
-    margin: 5rem;
+    margin: 3rem 0;
   }
 
   span {
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 0.9vw + 0.7rem, 1.2rem);
+    text-align: center;
   }
 
   > div {
@@ -84,6 +96,77 @@
       &:hover {
         rotate: 20deg;
       }
+
+      &:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+      }
     }
+  }
+}
+
+/* Responsive Layout */
+@media (max-width: 1024px) {
+  .product-card {
+    width: 15rem;
+    height: 22rem;
+  }
+
+  .home > section {
+    height: 14rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
+    padding: 1rem 3%;
+
+    > h1 {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    > section {
+      height: 12rem;
+    }
+  }
+
+  .product-card {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 1rem;
+
+    img {
+      margin: 1rem 0;
+    }
+
+    span {
+      font-size: 1rem;
+    }
+
+    button {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    width: 100%;
+    height: auto;
+
+    img {
+      margin: 0.5rem 0;
+    }
+
+    span {
+      font-size: 0.9rem;
+    }
+  }
+
+  .findmore {
+    font-size: 0.95rem;
   }
 }

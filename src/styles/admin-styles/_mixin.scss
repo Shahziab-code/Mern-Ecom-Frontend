@@ -1,9 +1,9 @@
-// _mixin.scss
 @mixin heading($spacing: 3px, $weight: 300, $case: uppercase) {
   letter-spacing: $spacing;
   font-weight: $weight;
   text-transform: $case;
 }
+// Perfect for reusable heading styles with letter spacing, weight, and case.
 
 @mixin flex(
   $dir: row,
@@ -17,6 +17,7 @@
   align-items: $alignItems;
   gap: $gap;
 }
+// Clean and flexible flexbox helper.
 
 @mixin grid($col: 1fr, $gap: 1rem, $row: unset) {
   display: grid;
@@ -24,6 +25,7 @@
   grid-template-rows: $row;
   gap: $gap;
 }
+// Straightforward grid helper; good defaults.
 
 @mixin inputStyle($w: 100%, $p: 1rem, $bgColor: inherit, $border: none) {
   padding: $p;
@@ -32,6 +34,7 @@
   width: $w;
   outline: none;
 }
+// Nice clean input styling helper.
 
 @mixin posCenter {
   position: absolute;
@@ -39,15 +42,18 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+// Common pattern for centering absolutely positioned elements.
 
 @mixin square($s: 1rem) {
   height: $s;
   width: $s;
 }
+// Useful square sizing helper.
 
 @mixin baseShadow() {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.384);
 }
+// Generic shadow helper.
 
 @mixin btn($p, $bg, $color) {
   cursor: pointer;
@@ -57,3 +63,4 @@
   background-color: $bg;
   color: $color;
 }
+// Button styling helper with padding, bg, and text color.
