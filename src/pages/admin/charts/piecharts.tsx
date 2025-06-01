@@ -6,6 +6,20 @@ import { usePieQuery } from "../../../redux/api/dashboardAPI";
 import { RootState } from "../../../redux/store";
 import { Navigate } from "react-router-dom";
 
+// Generates a unique HSL color from a string
+const generateColor = (str: string): string => {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  const h = Math.abs(hash) % 360; // Hue: 0–359
+  const s = 70 + (Math.abs(hash) % 20); // Saturation: 70–89%
+  const l = 45 + (Math.abs(hash) % 20); // Lightness: 45–64%
+
+  return `hsl(${h}, ${s}%, ${l}%)`;
+};
+
 const PieCharts = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
 
@@ -50,14 +64,13 @@ const PieCharts = () => {
                 <DoughnutChart
                   labels={categories.map((i) => Object.keys(i)[0])}
                   data={categories.map((i) => Object.values(i)[0])}
-                  backgroundColor={categories.map(
-                    (i) =>
-                      `hsl(${Object.values(i)[0] * 4}, ${
-                        Object.values(i)[0]
-                      }%, 50%)`
+                  backgroundColor={categories.map((i) =>
+                    generateColor(Object.keys(i)[0])
                   )}
                   legends={false}
-                  offset={[0, 0, 0, 80]}
+                  offset={new Array(categories.length)
+                    .fill(0)
+                    .map((_, idx) => (idx === categories.length - 1 ? 80 : 0))}
                 />
               </div>
               <h2>Product Categories Ratio</h2>
